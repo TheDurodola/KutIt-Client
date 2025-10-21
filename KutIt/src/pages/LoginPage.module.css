@@ -1,0 +1,102 @@
+.page{
+    display: flex;
+    max-height: 100vh;
+    background-color: #ffffff3f;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    margin: 50px;
+}
+
+.input{
+    padding: 5px;
+    width: 22dvw;
+    margin-top: 5dvh;
+    height: 6vh;
+    border-width: 0px 0px 2px 0px;
+    border-color: #6b6b6b;
+    background-color: #e0dede27;
+}
+
+.sidepicture{
+    width: 70vw;
+    height: 100vh;
+}
+
+.urlform{
+    justify-content: center;
+    justify-items: center;
+}
+
+.loginbtn{
+    margin-top: 2dvh;
+    width: 22dvw;
+    height: 5dvh;
+    background-color: rgb(55, 180, 23);
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 2vh;
+}
+
+
+.loginbtn.enabled {
+  background-color: #007bff; /* blue */
+  cursor: pointer;
+}
+
+.loginbtn.disabled {
+  background-color: #aaa; /* gray */
+  cursor: not-allowed;
+}
+
+.signuptext{
+  color: #0da2c7;
+  font-weight: 700;
+  cursor: pointer;
+}
+.signuptext:hover{
+  text-decoration: underline;
+
+}
+
+
+.header{
+  display: flex;
+  gap: 10vw;
+}
+
+.logo{
+  height: 8vh;
+  width: 10vh;
+  position: fixed;
+  top: 10vh;
+  right: 5vw;
+}
+
+.toast {
+  position: fixed;
+  top: -60px; /* hidden above view */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4d4d;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  transition: top 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  z-index: 9999;
+}
+
+.toast.show {
+  top: 20px; /* slides into view */
+  opacity: 1;
+}
