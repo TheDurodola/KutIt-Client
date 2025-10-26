@@ -1,6 +1,6 @@
 import styles from "./LoginPage.module.css";
 import sidepicture from "../assets/Abuja1.jpg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import logo from "../assets/KutItLogo.png";
 
@@ -11,6 +11,9 @@ export default function LoginPage() {
   const [showError, setShowError] = useState(false); 
   const [form, setForm] = useState({ identifier: "", password: "" });
   const isDisabled = !form.identifier || !form.password;
+
+
+  const navigate = useNavigate();
 
 
    const triggerError = (msg) => {
@@ -34,9 +37,12 @@ export default function LoginPage() {
       if (!response.ok) {
         console.log(data)
         triggerError(data.message)        
+      }else{
+        console.log(data)
+        navigate("/dashboard")
       }
     } catch (err) {
-      triggerError("Didn't get to the backend");
+      triggerError("Oops! Looks like we can’t reach the server right now. Check your connection and try again.");
     }
   };
 

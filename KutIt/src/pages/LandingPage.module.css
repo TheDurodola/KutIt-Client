@@ -6,28 +6,25 @@
   align-items: center;
 }
 
-.btnArea{
-    margin-left: 55vw;
-    
+.btnArea {
+  margin-left: 55vw;
 }
 
-.signuptext{
+.signuptext {
   color: #0da2c7;
   font-weight: 700;
   cursor: pointer;
 }
 
-.signuptext:hover{
+.signuptext:hover {
   text-decoration: underline;
-
 }
 
-
-.logo{
-    width: 5vw;
-    height: 10vh;
-    margin-right: 10vw;
-    position: relative;
+.logo {
+  width: 5vw;
+  height: 10vh;
+  margin-right: 10vw;
+  position: relative;
 }
 .hero {
   align-content: center;
@@ -46,8 +43,6 @@
   height: 100vh;
   justify-items: center;
 }
-
-
 
 .input {
   width: 30vw;
@@ -76,11 +71,22 @@
   transition: 0.3s;
 }
 
-.submit:hover {
+.submit.enabled:hover {
   background-color: #4bf63b;
   box-shadow: 0 0 0 5px #76f63b5f;
   color: #fff;
 }
+
+.submit.enabled {
+  background-color: #007bff; /* blue */
+  cursor: pointer;
+}
+
+.submit.disabled {
+  background-color: #aaa; /* gray */
+  cursor: not-allowed;
+}
+
 .header {
   margin-bottom: 4vh;
   font-family: "BBH Sans Bogle", sans-serif;
@@ -88,23 +94,20 @@
   font-style: normal;
 }
 
-.adArea{
+.adArea {
   margin-top: 10px;
 }
 
-
-
-.errormessage{
+.errormessage {
   background-color: #4bf63b;
   z-index: 1;
   position: fixed;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-
 .toast {
   position: fixed;
-  top: -60px; 
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #ff4d4d;

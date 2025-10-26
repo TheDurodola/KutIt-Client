@@ -9,6 +9,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL_FOR_BACKEND;
 export default function LandingPage() {
   const [form, setForm] = useState({ originalLink: "" });
   const [message, setMessage] = useState("Shorten");
+  const [color, setColor] = useState("");
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
 
@@ -23,7 +24,7 @@ export default function LandingPage() {
   const handleSubmission = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${BASE_URL}/entry`, {
+      const response = await fetch(`${BASE_URL}/api/v1/entry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -34,7 +35,14 @@ export default function LandingPage() {
       if (!response.ok) {
         triggerError(data.message);
       } else {
-        setMessage("Copied")
+        navigator.clipboard.writeText(
+          "http://localhost:5173/" + data.response.shortenedLink
+        );
+        setMessage("Copied");
+        setColor("#4bf63b");
+        setTimeout(() => {
+          setColor(""), setMessage("Shorten");
+        }, 3000);
       }
     } catch (err) {
       triggerError(
@@ -74,10 +82,12 @@ export default function LandingPage() {
             />
             <input
               className={`${styles.submit} ${
-                isDisabled ? styles.enabled : styles.disabled
+                isDisabled ? styles.disabled : styles.enabled
               }`}
+              style={{ backgroundColor: color }}
               type="submit"
               value={message}
+              disabled={isDisabled}
             />
           </form>
           <div className={styles.adArea}>

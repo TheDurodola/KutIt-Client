@@ -1,0 +1,127 @@
+.page {
+  background-color: rgb(255, 255, 255);
+  height: 100dvh;
+  width: 100dvw;
+  color: beige;
+  display: flex;
+}
+
+.sidebar {
+  background-color: rgb(0, 0, 0);
+  height: 100dvh;
+  width: 13dvw;
+  justify-items: center;
+}
+
+.sidebar img {
+  margin-top: 4dvh;
+  height: 10dvh;
+}
+
+.sidebar ul {
+  margin-top: 10dvh;
+  height: 10dvh;
+}
+
+.sidebar li {
+  margin: 5dvh;
+  font-weight: 700;
+}
+
+.sidebar li:hover {
+  text-decoration: underline;
+  z-index: 100;
+}
+
+.logout {
+  color: crimson;
+}
+
+.body {
+  color: black;
+  padding: 1dvh 0dvh 0dvh 0dvh;
+  background-color: rgb(231, 245, 245);
+  width: 100dvw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  justify-self: center;
+  font-family: "BBH Sans Bogle", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 5rem;
+}
+
+
+
+.input {
+  width: 60vw;
+  height: 6vh;
+  padding: 1vw;
+  border: 3px solid #050505;
+  border-radius: 5px 0 0 5px;
+}
+
+.input:focus {
+  width: 60vw;
+  height: 6vh;
+  padding: 1vw;
+  border: 3px solid #050505;
+  border-radius: 5px 0 0 5px;
+}
+
+.submit {
+  background-color: #a0a0a0;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px 5px 5px 0px;
+  width: 10dvw;
+  height: 41.5px;
+  transition: 0.3s;
+}
+
+.cards{
+    margin-top: 15dvh;
+    display: flex;
+    gap: 3dvw;
+    /* background-color: aqua; */
+    width: 80dvw;
+    height: 50dvh;
+
+    align-items: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+
+.errormessage {
+  background-color: #4bf63b;
+  z-index: 1;
+  position: fixed;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.toast {
+  position: fixed;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff4d4d;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  transition: top 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  z-index: 9999;
+}
+
+.toast.show {
+  top: 50px;
+  opacity: 1;
+}
