@@ -1,0 +1,31 @@
+
+.sidebar {
+  background-color: rgb(0, 0, 0);
+  height: 100dvh;
+  width: 13dvw;
+  justify-items: center;
+}
+
+.sidebar img {
+  margin-top: 4dvh;
+  height: 10dvh;
+}
+
+.sidebar ul {
+  margin-top: 10dvh;
+  height: 10dvh;
+}
+
+.sidebar li {
+  margin: 5dvh;
+  font-weight: 700;
+}
+
+.sidebar li:hover {
+  text-decoration: underline;
+  z-index: 100;
+}
+
+.logout {
+  color: crimson;
+}

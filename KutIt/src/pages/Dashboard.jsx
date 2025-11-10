@@ -1,5 +1,6 @@
 import styles from "./Dashboard.module.css";
 import logo from "../assets/KutitLogo.png";
+import Sidebar from "../components/Sidebar.jsx";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Card from "../card/Card.jsx";
@@ -126,7 +127,7 @@ const Dashboard = () => {
         <div className={`${styles.toast} ${showError ? styles.show : ""}`}>
           {error}
         </div>
-        <div className={styles.sidebar}>
+        {/* <div className={styles.sidebar}>
           <img src={logo} alt="Logo" />
           <ul className={styles.menu}>
             <li>Dashboard</li>
@@ -141,6 +142,8 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
+       */}
+       <Sidebar></Sidebar>
         <div className={styles.body}>
           <div className={styles.header}>KutIt</div>
           <form className={styles.urlform} onSubmit={handleSubmission}>

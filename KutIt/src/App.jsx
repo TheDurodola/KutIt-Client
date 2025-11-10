@@ -8,6 +8,7 @@ import SignUpPage from "./pages/SignUpPage";
 import RedirectPage from "./pages/RedirectPage";
 import ErrorPage from "./pages/ErrorPage"
 import Dashboard from "./pages/Dashboard"
+import Profile from "./pages/Profile"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LogInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/error" element={<ErrorPage />}/>
+        <Route path="/profile" element={<Profile />} />
         <Route path="/unauthorized" element={<Unauthorized />}/>
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/:shortCode" element={<RedirectPage />} />

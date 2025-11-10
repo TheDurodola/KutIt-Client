@@ -123,15 +123,7 @@ export default function SignUpPage() {
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
             />
-            <input
-              className={styles.input}
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+            
             <input
               className={`${styles.submit} ${
                 isDisabled ? styles.disabled : styles.enabled
