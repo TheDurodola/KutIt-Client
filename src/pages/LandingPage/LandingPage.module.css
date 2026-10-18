@@ -1,0 +1,608 @@
+.page {
+  min-height: 100dvh;
+  background-color: var(--color-bg, #050505);
+  color: var(--color-text, #2CFF56);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.mainContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  flex: 1;
+}
+
+/* Asymmetric Hero Section */
+.heroSection {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  animation: heroEntry 420ms var(--ease-out, ease-out);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.arcadeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 178, 0, 0.1);
+  border: 1px solid var(--color-accent, #FFB200);
+  color: var(--color-accent, #FFB200);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  width: fit-content;
+}
+
+.heroTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+  line-height: 1.35;
+  color: var(--color-text, #2CFF56);
+  text-shadow: 0 0 12px rgba(44, 255, 86, 0.35);
+}
+
+.accentText {
+  color: var(--color-accent, #FFB200);
+  text-shadow: 0 0 12px rgba(255, 178, 0, 0.4);
+}
+
+.heroSubtitle {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #b7e8be;
+  max-width: 65ch;
+  margin-bottom: 0.5rem;
+}
+
+/* Terminal Input Box */
+.terminalBox {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px solid var(--color-border-bright, #2CFF56);
+  border-radius: var(--radius-base, 8px);
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+              0 0 16px rgba(44, 255, 86, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--color-border, #1a4221);
+  padding-bottom: 0.6rem;
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminalDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.dotRed { background-color: var(--color-heart, #FF0000); }
+.dotYellow { background-color: var(--color-coin, #FFD700); }
+.dotGreen { background-color: var(--color-text, #2CFF56); }
+
+.terminalTitle {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.urlForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+  letter-spacing: 0.04em;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  overflow: hidden;
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.inputGroup:focus-within {
+  border-color: var(--color-accent, #FFB200);
+  box-shadow: 0 0 0 2px rgba(255, 178, 0, 0.25);
+}
+
+.promptPrefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  color: var(--color-text, #2CFF56);
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.85rem;
+  background-color: rgba(44, 255, 86, 0.05);
+  border-right: 1px solid var(--color-border, #1a4221);
+  user-select: none;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 12px 14px;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.95rem;
+  color: var(--color-neutral, #FFFFFF);
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: #4a634e;
+}
+
+.submitBtn {
+  border-radius: 0 6px 6px 0 !important;
+  border: none !important;
+}
+
+/* Result Box */
+.resultBox {
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border-bright, #2CFF56);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: heroEntry 300ms var(--ease-out, ease-out);
+}
+
+.resultLabel {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.resultRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.resultLink {
+  color: var(--color-text, #2CFF56);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(44, 255, 86, 0.1);
+  border: 1px solid var(--color-border-bright, #2CFF56);
+  color: var(--color-text, #2CFF56);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  transition: all 150ms ease-out;
+  cursor: pointer;
+}
+
+.copyBtn:hover {
+  background-color: var(--color-text, #2CFF56);
+  color: #050505;
+}
+
+/* Account Ad Area */
+.adArea {
+  background-color: rgba(255, 178, 0, 0.04);
+  border: 1px dashed var(--color-border, #1a4221);
+  padding: 12px 16px;
+  border-radius: var(--radius-base, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.adHint {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  color: var(--color-coin, #FFD700);
+}
+
+.adText {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: #a4caa8;
+  margin-bottom: 0;
+}
+
+.signupLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+  font-weight: 600;
+}
+
+.signupLink:hover {
+  color: var(--color-coin, #FFD700);
+  text-decoration: underline;
+}
+
+/* Asymmetric Hero Side Terminal */
+.heroSidebar {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.sideTerminalFrame {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.frameHeader {
+  background-color: #080d09;
+  border-bottom: 1.5px solid var(--color-border, #1a4221);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.blinkSignal {
+  color: var(--color-heart, #FF0000);
+  font-weight: 700;
+  animation: retroBlink 1.2s infinite;
+}
+
+.telemetryContent {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+}
+
+.codeLine {
+  font-size: 0.8rem;
+  color: #9cb89f;
+}
+
+.logGreen { color: var(--color-text, #2CFF56); font-weight: 600; }
+.logYellow { color: var(--color-coin, #FFD700); font-weight: 600; }
+.logDim { color: var(--color-text-dim, #1f9e3c); }
+
+.asciiDivider {
+  color: var(--color-border, #1a4221);
+  font-size: 0.75rem;
+  overflow: hidden;
+}
+
+.metricsBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metricNum {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-coin, #FFD700);
+}
+
+.metricName {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.5rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.asciiArt {
+  font-family: monospace;
+  font-size: 0.65rem;
+  line-height: 1.1;
+  color: var(--color-text, #2CFF56);
+  white-space: pre;
+  background-color: var(--color-surface-inset, #040804);
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px dashed var(--color-border, #1a4221);
+  user-select: none;
+}
+
+.systemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--color-border, #1a4221);
+}
+
+.insertCoin {
+  color: var(--color-accent, #FFB200);
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  animation: retroBlink 1s infinite;
+}
+
+/* Feature Section with Asymmetric Grid */
+.featureSection {
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionCategory {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.sectionTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+  color: var(--color-text, #2CFF56);
+}
+
+.asymmetricGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.featureCard {
+  background-color: var(--color-surface, #0b120c);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  transition: all 200ms ease-out;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.featureCard:hover {
+  border-color: var(--color-border-bright, #2CFF56);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 255, 86, 0.12);
+}
+
+.cardWide {
+  grid-column: span 7;
+}
+
+.cardCompact {
+  grid-column: span 5;
+}
+
+.featureHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featureIcon {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(44, 255, 86, 0.08);
+  border: 1px solid var(--color-border-bright, #2CFF56);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text, #2CFF56);
+}
+
+.featureIndex {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.featureTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-text, #2CFF56);
+}
+
+.featureDesc {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #a4caa8;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.featureTag {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-coin, #FFD700);
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 6px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+/* Footer */
+.footer {
+  background-color: #070d08;
+  border-top: 2px solid var(--color-border, #1a4221);
+  padding: 2.5rem 0;
+  margin-top: auto;
+}
+
+.footerContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--color-border, #1a4221);
+  padding-bottom: 1rem;
+}
+
+.footerLogo {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.8rem;
+  color: var(--color-text, #2CFF56);
+}
+
+.footerStatus {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--color-coin, #FFD700);
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footerCopy {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-dim, #1f9e3c);
+  margin-bottom: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+}
+
+.footerLinks a {
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.footerLinks a:hover {
+  color: var(--color-accent, #FFB200);
+}
+
+@keyframes heroEntry {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes retroBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .promptPrefix {
+    display: none;
+  }
+
+  .submitBtn {
+    border-radius: 0 0 6px 6px !important;
+    width: 100%;
+  }
+
+  .asymmetricGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardWide, .cardCompact {
+    grid-column: span 1;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

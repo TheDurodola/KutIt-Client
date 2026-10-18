@@ -1,0 +1,303 @@
+.card {
+  background-color: var(--color-surface-card, #0e170f);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  padding: 1.25rem;
+  min-width: 280px;
+  max-width: 380px;
+  flex: 1 1 300px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--duration-normal, 200ms) var(--ease-out, ease-out),
+              transform var(--duration-normal, 200ms) var(--ease-out, ease-out),
+              box-shadow var(--duration-normal, 200ms) var(--ease-out, ease-out);
+}
+
+.card:hover {
+  border-color: var(--color-border-bright, #2CFF56);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(44, 255, 86, 0.15),
+              0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px dashed var(--color-border, #1a4221);
+  padding-bottom: 0.75rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.tagIcon {
+  color: var(--color-accent, #FFB200);
+}
+
+.clicksBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: rgba(255, 215, 0, 0.1);
+  border: 1px solid var(--color-coin, #FFD700);
+  color: var(--color-coin, #FFD700);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.urlSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  color: var(--color-text-dim, #1f9e3c);
+  letter-spacing: 0.05em;
+}
+
+.shortUrlRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  border-radius: 6px;
+  padding: 6px 10px;
+  gap: 0.5rem;
+}
+
+.shortUrlText {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: var(--color-text, #2CFF56);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.iconBtn {
+  color: var(--color-text-dim, #1f9e3c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 150ms ease-out;
+}
+
+.iconBtn:hover {
+  color: var(--color-accent, #FFB200);
+  background-color: rgba(255, 178, 0, 0.15);
+}
+
+.copiedBtn {
+  color: var(--color-coin, #FFD700) !important;
+}
+
+.targetSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.originalUrlText {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.8rem;
+  color: #a3c4a8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--color-border, #1a4221);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.dateMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.inspectHint {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  color: var(--color-accent, #FFB200);
+  opacity: 0.8;
+}
+
+.card:hover .inspectHint {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Modal Content */
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modalRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.modalLabel {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.modalValueBox {
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 10px;
+  border-radius: 6px;
+  word-break: break-all;
+}
+
+.modalLink {
+  color: var(--color-accent, #FFB200);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: underline;
+}
+
+.extIcon {
+  flex-shrink: 0;
+}
+
+.modalShortUrlRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.modalShortUrl {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text, #2CFF56);
+  word-break: break-all;
+}
+
+.modalCopyBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: rgba(44, 255, 86, 0.1);
+  border: 1px solid var(--color-border-bright, #2CFF56);
+  color: var(--color-text, #2CFF56);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  transition: all 150ms ease-out;
+}
+
+.modalCopyBtn:hover {
+  background-color: var(--color-text, #2CFF56);
+  color: #050505;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.gridStat {
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.statLabel {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.statNumber {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-coin, #FFD700);
+}
+
+.statDate {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: var(--color-neutral, #FFFFFF);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .modalGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+}

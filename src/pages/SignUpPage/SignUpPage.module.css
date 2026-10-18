@@ -1,0 +1,360 @@
+.page {
+  min-height: 100dvh;
+  background-color: var(--color-bg, #050505);
+  color: var(--color-text, #2CFF56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 1020px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: pageFadeIn 420ms var(--ease-out, ease-out);
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface, #0b120c);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+}
+
+.returnLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-dim, #1f9e3c);
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+}
+
+.returnLink:hover {
+  color: var(--color-accent, #FFB200);
+}
+
+.terminalMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.dotSeparator {
+  color: var(--color-border, #1a4221);
+}
+
+.portStatus {
+  color: var(--color-coin, #FFD700);
+}
+
+.splitLayout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Left Form Panel */
+.formPanel {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px solid var(--color-border-bright, #2CFF56);
+  border-radius: var(--radius-base, 8px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+              0 0 16px rgba(44, 255, 86, 0.1);
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 1.3rem;
+  color: var(--color-text, #2CFF56);
+}
+
+.formDesc {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: #a4caa8;
+  margin-bottom: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.nameRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.9rem;
+  color: var(--color-neutral, #FFFFFF);
+  transition: all 200ms ease-out;
+}
+
+.input:focus {
+  border-color: var(--color-accent, #FFB200);
+  box-shadow: 0 0 0 2px rgba(255, 178, 0, 0.3);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.successBox {
+  background-color: rgba(44, 255, 86, 0.08);
+  border: 1.5px solid var(--color-text, #2CFF56);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.successIcon {
+  color: var(--color-text, #2CFF56);
+}
+
+.successTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 1rem;
+  color: var(--color-text, #2CFF56);
+}
+
+.successDesc {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: #a4caa8;
+  margin-bottom: 0;
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border, #1a4221);
+}
+
+.hasAccountText {
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.loginLink {
+  color: var(--color-accent, #FFB200);
+}
+
+.loginLink:hover {
+  color: var(--color-coin, #FFD700);
+  text-decoration: underline;
+}
+
+/* Right Console Monitor */
+.consolePanel {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.consoleHeader {
+  background-color: #080d09;
+  border-bottom: 1.5px solid var(--color-border, #1a4221);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.consoleDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dotRed { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-heart, #FF0000); }
+.dotYellow { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-coin, #FFD700); }
+.dotGreen { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-text, #2CFF56); }
+
+.consoleTitle {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.consoleBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.brandBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoFrame {
+  width: 48px;
+  height: 48px;
+  background-color: #050505;
+  border: 1.5px solid var(--color-border-bright, #2CFF56);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.brandName {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 1.1rem;
+  color: var(--color-text, #2CFF56);
+}
+
+.brandSub {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.benefitsBox {
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 14px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.benefitsHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.6rem;
+  color: var(--color-coin, #FFD700);
+}
+
+.sparkleIcon {
+  color: var(--color-coin, #FFD700);
+}
+
+.benefitList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: #a4caa8;
+}
+
+.asciiTerminal {
+  font-family: monospace;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  color: var(--color-text, #2CFF56);
+  white-space: pre;
+  background-color: var(--color-surface-inset, #040804);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px dashed var(--color-border, #1a4221);
+  user-select: none;
+}
+
+.consoleFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-dim, #1f9e3c);
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-border, #1a4221);
+}
+
+.readyText {
+  color: var(--color-text, #2CFF56);
+  font-weight: 600;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .splitLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .nameRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formPanel {
+    padding: 1.5rem;
+  }
+}

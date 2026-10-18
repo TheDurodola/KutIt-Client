@@ -1,0 +1,77 @@
+.toast {
+  position: fixed;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: var(--radius-base, 8px);
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.68rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: var(--z-toast, 500);
+  transition: top 420ms var(--ease-out, ease-out), opacity 420ms var(--ease-out, ease-out);
+  opacity: 0;
+  max-width: 90vw;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.toast.show {
+  top: 24px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.message {
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.closeBtn {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  opacity: 0.8;
+  transition: opacity 150ms ease-out;
+}
+
+.closeBtn:hover {
+  opacity: 1;
+}
+
+/* Variant Styles */
+.error {
+  background-color: var(--color-heart, #FF0000);
+  color: #FFFFFF;
+  border: 2px solid #ff6666;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+}
+
+.success {
+  background-color: #0b2210;
+  color: var(--color-text, #2CFF56);
+  border: 2px solid var(--color-text, #2CFF56);
+  box-shadow: 0 4px 20px rgba(44, 255, 86, 0.3);
+}
+
+.info {
+  background-color: #1a1505;
+  color: var(--color-coin, #FFD700);
+  border: 2px solid var(--color-coin, #FFD700);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}

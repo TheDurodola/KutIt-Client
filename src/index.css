@@ -1,6 +1,9 @@
-/* ========================================
-   1. MODERN RESET
-======================================== */
+/* ==========================================================================
+   8-BIT RETRO TERMINAL DESIGN SYSTEM
+   Based on design.md specifications
+   ========================================================================== */
+
+/* 1. RESET & BOX SIZING */
 *,
 *::before,
 *::after {
@@ -9,28 +12,279 @@
   padding: 0;
 }
 
-html, body, #root {
-  height: 100%;
+:root {
+  /* Colors from design.md */
+  --color-bg: #050505; /* Primary background surface (off-black) */
+  --color-surface: #0b120c; /* Secondary surface */
+  --color-surface-card: #0e170f; /* Card surface */
+  --color-surface-hover: #142417; /* Hover surface */
+  --color-surface-inset: #040804; /* Recessed inputs/screens */
+
+  --color-text: #2CFF56; /* Primary text (phosphor green) */
+  --color-text-dim: #1f9e3c; /* Secondary text */
+  --color-text-muted: #156227; /* Muted borders/hints */
+  
+  --color-accent: #FFB200; /* Primary accent, CTAs & interactive */
+  --color-accent-dark: #cc8e00; /* Button hover 8% darken */
+  --color-neutral: #FFFFFF; /* Pixel White */
+  --color-coin: #FFD700; /* Coin Yellow (warnings/alerts) */
+  --color-heart: #FF0000; /* Heart Red (errors/destructive) */
+  --color-danger: #FF0000;
+
+  --color-border: #1a4221; /* Muted border */
+  --color-border-bright: #2CFF56; /* Active border */
+  --color-border-accent: #FFB200; /* Accent border */
+
+  /* Typography */
+  --font-display: "Press Start 2P", monospace;
+  --font-body: "Press Start 2P", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Shapes & Rhythm */
+  --radius-sm: 4px;
+  --radius-base: 8px; /* Base corner radius: 8px */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Physics & Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 420ms;
+
+  /* Z-Index Contract */
+  --z-base: 0;
+  --z-sticky-nav: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 500;
 }
 
-img, picture, video, canvas, svg {
+html, body {
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-bg);
+}
+
+/* 2. CRT SCANLINES & PHOSPHOR GLOW OVERLAY */
+body::before {
+  content: " ";
   display: block;
-  max-width: 100%;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  z-index: 99;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
-input, button, textarea, select {
-  font: inherit;
+/* CRT Vignette Edge Shadow */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  z-index: 98;
+  pointer-events: none;
+}
+
+/* 3. TYPOGRAPHY SCALE */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-shadow: 0 0 8px rgba(44, 255, 86, 0.35);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.4;
+}
+
+p {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 72ch;
+  color: var(--color-text);
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent);
   text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
-ul {
-  list-style: none;
+a:hover {
+  color: var(--color-coin);
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
 }
 
+/* 4. BUTTONS & CONTROLS */
+button {
+  cursor: pointer;
+  font-family: var(--font-display);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+input, textarea, select {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background-color: var(--color-surface-inset);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(255, 178, 0, 0.3),
+              0 0 8px rgba(255, 178, 0, 0.2);
+}
+
+/* 5. RETRO TERMINAL UTILITIES */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 0 1.5rem;
+}
+
+.terminal-panel {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-base);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4),
+              inset 0 0 16px rgba(44, 255, 86, 0.03);
+  position: relative;
+}
+
+.terminal-panel:hover {
+  border-color: var(--color-border-bright);
+}
+
+.terminal-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background-color: #080d09;
+  border-bottom: 1.5px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.dot-red { background-color: var(--color-heart); }
+.dot-yellow { background-color: var(--color-coin); }
+.dot-green { background-color: var(--color-text); }
+
+/* Blinking terminal cursor */
+.blinking-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 14px;
+  background-color: var(--color-text);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: retroBlink 1s infinite;
+}
+
+@keyframes retroBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Subtle Phosphor Glow */
+.glow-text {
+  text-shadow: 0 0 8px rgba(44, 255, 86, 0.7),
+               0 0 16px rgba(44, 255, 86, 0.3);
+}
+
+.glow-accent {
+  text-shadow: 0 0 8px rgba(255, 178, 0, 0.7),
+               0 0 16px rgba(255, 178, 0, 0.3);
+}
+
+/* 6. CUSTOM RETRO SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 1px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border: 1px solid var(--color-text-dim);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+/* 7. REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -39,124 +293,3 @@ ul {
     scroll-behavior: auto !important;
   }
 }
-
-/* ========================================
-   2. ROOT VARIABLES (EASY THEMING)
-======================================== */
-:root {
-  --font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-  --color-bg: #f9fafb;
-  --color-text: #111827;
-  --color-primary: #2563eb;
-  --color-secondary: #6b7280;
-  --color-accent: #f59e0b;
-  --color-danger: #ef4444;
-  --color-success: #22c55e;
-
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-
-  --transition: all 0.2s ease-in-out;
-}
-
-
-
-/* ========================================
-   3. GLOBAL STYLES
-======================================== */
-body {
-  font-family: var(--font-family);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* ========================================
-   4. TYPOGRAPHY
-======================================== */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
-h4 { font-size: 1.125rem; }
-h5 { font-size: 1rem; }
-h6 { font-size: 0.875rem; }
-
-/* ========================================
-   5. LAYOUT UTILITIES
-======================================== */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding: 0 1rem;
-}
-
-.flex {
-  display: flex;
-  gap: 1rem;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.text-center { text-align: center; }
-
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 2rem; }
-
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 2rem; }
-
-.p-1 { padding: 0.5rem; }
-.p-2 { padding: 1rem; }
-.p-3 { padding: 2rem; }
-
-/* ========================================
-   6. INTERACTIONS & TRANSITIONS
-======================================== */
-button,
-a,
-input,
-textarea {
-  transition: var(--transition);
-}
-
-button:hover,
-a:hover {
-  opacity: 0.85;
-}
-

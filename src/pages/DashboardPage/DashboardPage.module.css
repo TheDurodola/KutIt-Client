@@ -1,0 +1,409 @@
+.page {
+  min-height: 100dvh;
+  background-color: var(--color-bg, #050505);
+  color: var(--color-text, #2CFF56);
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.body {
+  flex: 1;
+  min-height: 100dvh;
+  background-color: var(--color-bg, #050505);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.contentContainer {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: dashboardFadeIn 420ms var(--ease-out, ease-out);
+}
+
+/* Dashboard Header & Quick Stats */
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  border-bottom: 2px solid var(--color-border, #1a4221);
+  padding-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.headerTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statusLive {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text, #2CFF56);
+}
+
+.liveIcon {
+  animation: retroBlink 1.5s infinite;
+  color: var(--color-text, #2CFF56);
+}
+
+.headerTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--color-text, #2CFF56);
+}
+
+.headerSub {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  color: #a4caa8;
+  margin-bottom: 0;
+}
+
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.statBox {
+  background-color: var(--color-surface, #0b120c);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+
+.statKey {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.55rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.statVal {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-neutral, #FFFFFF);
+}
+
+.statValYellow {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-coin, #FFD700);
+}
+
+.statValGreen {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text, #2CFF56);
+}
+
+/* Route Deploy Terminal */
+.commandTerminal {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px solid var(--color-border-bright, #2CFF56);
+  border-radius: var(--radius-base, 8px);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              0 0 16px rgba(44, 255, 86, 0.08);
+}
+
+.terminalTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--color-border, #1a4221);
+  padding-bottom: 0.6rem;
+}
+
+.dotsGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.dotRed { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-heart, #FF0000); }
+.dotYellow { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-coin, #FFD700); }
+.dotGreen { width: 8px; height: 8px; border-radius: 2px; background-color: var(--color-text, #2CFF56); }
+
+.terminalPromptLabel {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.urlForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.inputLabel {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.65rem;
+  color: var(--color-accent, #FFB200);
+  letter-spacing: 0.04em;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  overflow: hidden;
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.inputGroup:focus-within {
+  border-color: var(--color-accent, #FFB200);
+  box-shadow: 0 0 0 2px rgba(255, 178, 0, 0.25);
+}
+
+.promptPrefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  color: var(--color-text, #2CFF56);
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.85rem;
+  background-color: rgba(44, 255, 86, 0.05);
+  border-right: 1px solid var(--color-border, #1a4221);
+  user-select: none;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 12px 14px;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.95rem;
+  color: var(--color-neutral, #FFFFFF);
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: #4a634e;
+}
+
+.deployBtn {
+  border-radius: 0 6px 6px 0 !important;
+  border: none !important;
+}
+
+/* Links Matrix Section */
+.matrixSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.matrixHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px dashed var(--color-border, #1a4221);
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.matrixTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text, #2CFF56);
+}
+
+.matrixTitle h2 {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.matrixCount {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--color-accent, #FFB200);
+}
+
+.cardsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Shimmer Skeletons */
+.skeletonCard {
+  background-color: var(--color-surface, #0b120c);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  padding: 1.25rem;
+  min-width: 280px;
+  flex: 1 1 300px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(44, 255, 86, 0.08),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonLineShort {
+  width: 40%;
+  height: 16px;
+  background-color: #121c13;
+  border-radius: 4px;
+}
+
+.skeletonLineFull {
+  width: 90%;
+  height: 36px;
+  background-color: #121c13;
+  border-radius: 4px;
+}
+
+.skeletonLineMed {
+  width: 60%;
+  height: 14px;
+  background-color: #121c13;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Empty State */
+.emptyState {
+  background-color: var(--color-surface, #0b120c);
+  border: 2px dashed var(--color-border, #1a4221);
+  border-radius: var(--radius-base, 8px);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.emptyIconFrame {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-surface-inset, #040804);
+  border: 1.5px solid var(--color-border, #1a4221);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyIcon {
+  color: var(--color-text-dim, #1f9e3c);
+}
+
+.emptyTitle {
+  font-family: var(--font-display, "Press Start 2P", monospace);
+  font-size: 1rem;
+  color: var(--color-coin, #FFD700);
+}
+
+.emptyText {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #a4caa8;
+  max-width: 50ch;
+  margin-bottom: 0;
+}
+
+.emptyTag {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-dim, #1f9e3c);
+  background-color: var(--color-surface-inset, #040804);
+  border: 1px solid var(--color-border, #1a4221);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+@keyframes dashboardFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes retroBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .contentContainer {
+    padding: 1rem 1rem 3rem 1rem;
+  }
+
+  .dashboardHeader {
+    align-items: flex-start;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .promptPrefix {
+    display: none;
+  }
+
+  .deployBtn {
+    border-radius: 0 0 6px 6px !important;
+    width: 100%;
+  }
+
+  .cardsGrid {
+    flex-direction: column;
+  }
+}

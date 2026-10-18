@@ -1,16 +1,7 @@
-import styles from "./LogButton.module.css"
-import { useNavigate } from "react-router";
+import Button from "../components/common/Button";
 
-export default function LogButton({buttonTitle, link}) {
-
-     const navigate = useNavigate(); 
-
-  const goToAbout = () => {
-    navigate(link);
-  };
-    return(
-        <>
-        <button className={styles.logbutton} onClick={goToAbout}>{buttonTitle}</button>
-        </>
-    )
-}
+/**
+ * Backwards compatibility re-export. Canonical location: src/components/common/Button
+ */
+export default Button;
+export { Button };

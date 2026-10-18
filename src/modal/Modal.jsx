@@ -1,11 +1,7 @@
-import styles from "./Modal.module.css";
+import Modal from "../components/common/Modal";
 
-export default function Modal({ onClose, children }) {
-  return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        {children}
-      </div>
-    </div>
-  );
-}
+/**
+ * Backwards compatibility re-export. Canonical location: src/components/common/Modal
+ */
+export default Modal;
+export { Modal };
